@@ -23,6 +23,21 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+           #############################################
+      # 1) REMOTE-INFRA: Create S3 + DynamoDB
+      #############################################
+      - name: Terraform Init (remote-infra)
+        working-directory: ./remote-infra
+        run: terraform init
+
+      - name: Terraform Apply (remote-infra)
+        working-directory: ./remote-infra
+        run: terraform apply -auto-approve
+
+      #############################################
+      # 2) EC2 INFRA: uses backend from S3
+      #############################################
+
       - name: Terraform Init
         run: terraform init
 
