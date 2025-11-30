@@ -42,7 +42,7 @@ jobs:
         run: terraform init   # <-- Missing earlier (Fixed)
 
       - name: Terraform Format Check
-        run: terraform fmt -check
+        run: cd .. && terraform fmt -check
 
       - name: Terraform Validate
         run: terraform validate
