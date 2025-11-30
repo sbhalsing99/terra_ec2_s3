@@ -39,7 +39,7 @@ jobs:
       ###########################################
 
       - name: Terraform Format Check
-        run: cd && Sterraform fmt -check
+        run: cd .. && Sterraform fmt -check
 
 
       - name: Terraform Validate
