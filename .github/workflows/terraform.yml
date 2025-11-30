@@ -27,10 +27,12 @@ jobs:
       # 1) REMOTE-INFRA: Create S3 + DynamoDB
       #############################################
       - name: Terraform Init (remote-infra)
+        if: github.run_number == 1
         working-directory: ./remote-infra
         run: terraform init
 
       - name: Terraform Apply (remote-infra)
+        if: github.run_number == 1
         working-directory: ./remote-infra
         run: terraform apply -auto-approve
 
